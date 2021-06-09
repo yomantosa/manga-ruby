@@ -1,0 +1,25 @@
+<% content_for :page_title, current_user.name %>
+
+<div class="section">
+	<div class="container">
+		<% @posts.each do |post| %>
+			<div class="card">
+        <div class="card-content">
+          <div class="main">
+            <div class="title content media-left">
+            <% if post.images.attached? %>
+              <%= link_to (image_tag post.images.first, style:'width:200px; height: auto;'), post %>
+            </div>
+            <% end %>
+            <div class="content main">
+              <p class="title is-4"><%= link_to post.title, post %></p>
+            </div>
+          </div>
+          <div class="content">
+              <%= post.content %>
+          </div>
+        </div>
+		  </div>
+		<% end %>
+	</div>
+</div>

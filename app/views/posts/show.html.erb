@@ -1,0 +1,39 @@
+<% content_for :page_title, @post.title %>
+
+<section class="section">
+    <div class="container" style="position: center">
+        <nav class="level">
+          <!-- Left side -->
+          <div class="level-left">
+            <p class="level-item">
+                <strong>Author: <%= @post.user.name %></strong>
+            </p>
+          </div>
+          <!-- Right side -->
+
+          <!-- Only show if the current user is the poster -->
+          <% if @post.user == current_user %>
+            <div class="level-right">
+                <p class="level-item">
+                  <%= link_to "Edit", edit_post_path(@post), class:"button" %>
+                </p>
+                <p class="level-item">
+                  <%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure?" }, class:"button is-danger" %>
+                  </p>
+            </div>
+          <% end %>
+        </nav>
+        <hr/>
+
+        <div class="content">
+            <%= @post.content %>
+        </div>
+        <% if @post.images.attached? %>
+          <% (0...@post.images.count).each do |image| %>
+          <div style="width: 300px;">
+              <%= image_tag(@post.thumbnail(image), style:'width:100%; height: auto;')%>
+          </div>
+          <% end %>
+        <% end %>
+    </div>
+</section>
