@@ -17,3 +17,4 @@ Turbolinks.start()
 ActiveStorage.start()
 
 //= require select2
+//= require chosen-jquery

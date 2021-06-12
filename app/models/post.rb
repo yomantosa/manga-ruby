@@ -1,5 +1,9 @@
 class Post < ApplicationRecord
-    belongs_to :user
+
+    has_many :authorships
+    has_many :users, through: :authorships
+
+
     validates :title, presence: true
     validates :content, presence: true
     

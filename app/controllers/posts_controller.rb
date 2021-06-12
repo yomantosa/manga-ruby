@@ -13,7 +13,6 @@ class PostsController < ApplicationController
   
     def create
         @post = Post.new(post_params)
-        @post.user = current_user
     
         respond_to do |format|
             if @post.save
@@ -27,7 +26,10 @@ class PostsController < ApplicationController
     end
   
     def require_author
-        redirect_to(@post) unless @post.user == current_user
+        redirect_to(@post) unless @post.users ==
+        @post.users.each do |user|
+            user.id
+        end
     end
 
     def set_post
@@ -61,6 +63,6 @@ class PostsController < ApplicationController
     private
   
     def post_params
-        params.require(:post).permit(:title, :user_id, :author, :content, images: [])
+        params.require(:post).permit(:title, :user_ids, :author, :content, images: [], )
     end
 end
