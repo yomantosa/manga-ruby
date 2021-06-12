@@ -5,20 +5,12 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version 3.0.1 or 3.0.0
 
-* System dependencies
+* Run "yarn add toastr"
 
-* Configuration
+* Run "bundle install"
 
-* Database creation
+* Run "rails db:migrate"
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Run "rails s" or "rails server"
